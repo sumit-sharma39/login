@@ -62,9 +62,9 @@ export function Register() {
           Register
         </button>
 
-        <div className="google-section">
+        <div className="google-section" >
           <p className="or-text">or</p>
-          <GoogleLogin
+          <GoogleLogin 
             onSuccess={handleGoogleLogin}
             onError={() => console.log("Google Sign In Failed")}
           />

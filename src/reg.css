@@ -103,3 +103,8 @@
     border-style: inset;
     cursor: pointer;
 }
+.google-section{
+    margin-top: 12px;
+    text-align: center;
+    width: 100%;
+}
