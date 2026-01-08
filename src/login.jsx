@@ -2,7 +2,7 @@ import "./index.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
-import {BASE_URL} from './config.js';
+import { BASE_URL } from './config';
 
 export function Login() {
   const [email, setEmail] = useState("");
@@ -12,7 +12,7 @@ export function Login() {
   const checkdetails = async (e) => {
     e.preventDefault();
     const payload = { email, password };
-    const r= await axios.post(`${BASE_URL}/login`, payload);
+    const r= await axios.post(`${ BASE_URL }/login`, payload);
     if(r.statusText==="OK "){
       window.location.href = "/home";
     }
