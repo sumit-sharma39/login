@@ -1,10 +1,15 @@
 import "./index.css";
 import { Link } from "react-router-dom";
+
+
 import axios from "axios";
 import { useState } from "react";
 import { BASE_URL } from './config';
+import { useNavigate } from "react-router-dom";
+
 
 export function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -13,11 +18,12 @@ export function Login() {
     e.preventDefault();
     const payload = { email, password };
     const r= await axios.post(`${ BASE_URL }/login`, payload);
-    if(r.statusText==="OK "){
-      window.location.href = "/home";
+    // const r= await axios.post("localhost:8000/login", payload);
+    if(r.data===1){
+      navigate("/home");
     }
     else{
-      window.location.href = "/register";
+      navigate("/login");
     }
   };
 
