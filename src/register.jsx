@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import {BASE_URL} from '../config/config.js';
 // import { useEffect } from 'react';
 import './index.css';
 import { GoogleLogin } from '@react-oauth/google'
@@ -16,7 +17,7 @@ const [password, setPassword] = useState("");
 const savedetails = async (e) => {
     e.preventDefault();
     const payload = { email, password };
-    const r = await axios.post("http://localhost:3000/register", payload);
+    const r = await axios.post(`${ BASE_URL}/register`, payload);
     console.log(r);
     if (r.data === 1) {
         window.location.href = "/home";
@@ -31,7 +32,7 @@ const savedetails = async (e) => {
     const token = credentialResponse.credential;
 
     const r = await axios.post(
-      "http://localhost:3000/googleauth",
+      `${BASE_URL}/googleauth`,
       { token }
     );
 
@@ -44,10 +45,24 @@ const savedetails = async (e) => {
 };
 
     return (
-        <div>
+        <div
+        style={{
+      "padding-left": "25px",
+      "padding-right": "25px",
+      "background-color": "#0e5b82ff",
+      "border-radius": "10px", 
+      "border-style": "inset", 
+      "border-color" : "#002c42ff",
+      height: "120%",
+      width: "130%",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center"
+    }}>
         <form className="login-form" onSubmit={savedetails}>
-        <h2>Register</h2>
-        <label>Email:</label>
+        <h2 style={{"color": "#ced4daff" }}>Register</h2>
+
+        <label style={{"color": "#ced4daff" }}>Email:</label>
         <br />
         <input
         type="email"
@@ -55,23 +70,46 @@ const savedetails = async (e) => {
         onChange={(e) => {
             setEmail(e.target.value);
         }}
+        style={{
+          borderRadius: "5px",
+          size : "15px",
+          height : "25px",
+          width  : "200px"
+        }}
         />
 
         <br />
 
-        <label>Password:</label>
+        <label style={{"color": "#ced4daff" }} >Password:</label>
         <br />
         <input
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+
+        style={{
+          borderRadius: "5px",
+          size : "15px",
+          height : "25px",
+          width  : "200px"
+        }}
         />
         <br />
-        <button type="submit">Register</button>
+        <button type="submit" 
+        style={{
+        "margin-top":"10px", 
+        height : "30px",
+        width  : "205px",
+        backgroundColor : "darkgrey",
+        borderRadius : "5px",
+        borderStyle : "inset",
+
+      }}  >
+        Register</button>
 
 
         <div style={{ marginTop: 12, textAlign: 'center' }}>
-        <p style={{ margin: '8px 0' }}>or</p>
+        <p style={{ margin: '8px 0', color:"white" , size: "8px" }}>or</p>
 
         <GoogleLogin
             onSuccess={ handleGoogleLogin}
@@ -80,9 +118,14 @@ const savedetails = async (e) => {
         />
         </div>
 
-        <p>
-        have an account? <Link to="/Login">Login</Link>
-        </p>
+        <button style={{"color": "#ced4daff" ,"margin-top":"10px", 
+        height : "30px",
+        width  : "205px",
+        backgroundColor : "darkgrey",
+        borderRadius : "5px",
+        borderStyle : "inset", }}>
+         <Link to="/Login" style={{"color": "#b81515ff" ,"text-decoration": "none"}}>Login</Link>
+        </button>
     </form>
 
     
