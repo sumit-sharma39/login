@@ -1,125 +1,61 @@
 import "./index.css";
-import { Link } from "react-router-dom";
-
-
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
-import { BASE_URL } from './config';
-import { useNavigate } from "react-router-dom";
-
+import { BASE_URL } from "./config";
 
 export function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // calling the backend api to check the details
   const checkdetails = async (e) => {
     e.preventDefault();
     const payload = { email, password };
-    const r= await axios.post(`${ BASE_URL }/login`, payload);
     // const r= await axios.post("localhost:8000/login", payload);
-    if(r.data===1){
+    const r = await axios.post(`${BASE_URL}/login`, payload);
+
+
+    if (r.data === 1) {
       navigate("/home");
-    }
-    else{
+    } else {
       navigate("/login");
     }
   };
 
   return (
-    <div className="login-container" 
-    style={{
-      "padding-left": "25px",
-      "padding-right": "25px",
-      "background-color": "#0e5b82ff",
-      "border-radius": "10px", 
-      "border-style": "inset", 
-      "border-color" : "#002c42ff",
-      height: "120%",
-      width: "130%",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center"
+    <div className="login-container">
+      <form className="login-form" onSubmit={checkdetails}>
+        <h2 className="login-title">Login</h2>
 
-    }}
-    > 
-    <form className="login-form" onSubmit={checkdetails} >
-      <h2 style={{"color": "#ced4daff" }}>Login</h2>
-      <label style={{
-        color: "white",
+        <label className="login-label">Email:</label>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="login-input"
+        />
 
-        }}>Email:</label>
-      <br />
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => {
-          setEmail(e.target.value);
-        }}
+        <label className="login-label">Password:</label>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="login-input"
+        />
 
-        style={{
-          borderRadius: "5px",
-          size : "15px",
-          height : "25px",
-          width  : "200px"
-        }}
-
-      />
-
-      <br />
-
-      <label style={{"color": "#ced4daff" }}>Password:</label>
-      <br />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-
-        style={{
-          borderRadius: "5px",
-          size : "15px",
-          height : "25px",
-          width  : "200px"
-        }}
-      />
-
-      <br />
-        {/* login button  */}
-      <button type="submit" 
-      style={{
-        "margin-top":"10px", 
-        height : "30px",
-        width  : "205px",
-        backgroundColor : "darkgrey",
-        borderRadius : "5px",
-        borderStyle : "inset",
-        transition: "height 0.3s, width 0.3s",
-        "transitionDuration": "0.3s"
-      }} > 
-        Login
+        <button type="submit" className="login-button">
+          Login
         </button>
 
-      <p style={{ 
-        marginTop: 12,
-        "font-size": "15px",
-        color: "white"
-      }}>
-        Don't have an account?
-
-        <Link to="/register" 
-        style={{"color": "#b81515ff",  }}
-        >
-          
-          Register</Link>
-      </p>
-    </form>
+        <p className="login-text">
+          Don't have an account?
+          <Link to="/register" className="register-link">
+            {" "}
+            Register
+          </Link>
+        </p>
+      </form>
     </div>
   );
 }
-
-
-
-// createRoot(document.getElementById('root')).render(
-//   <Header />
-// );

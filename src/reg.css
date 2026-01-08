@@ -1,33 +1,4 @@
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  min-height: 100svh; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url("./assets/3540021.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-}
-
-
-
-@media (max-width: 480px) {
-  body {
-    align-items: flex-start;
-    padding-top: 15vh;
-  }
-}
-
-
-.login-container {
+.register-container {
   padding: 25px;
   background-color: #0e5b82ff;
   border-radius: 10px;
@@ -42,44 +13,33 @@ body {
   align-items: center;
 }
 
+
 @media (max-width: 480px) {
-  .login-container {
-  padding: 25px;
-  background-color: #0e5b82ff;
-  border-radius: 10px;
-  border-style: inset;
-  border-color: #002c42ff;
-
-  width: 90%;
-  max-width: 340px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  .register-container {
+    width: 90%;
+    max-width: 340px;
+  }
 }
 
-
-.login-form {
+.register-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
 }
 
-
-.login-title {
+.register-title {
   color: #ced4daff;
   margin-bottom: 15px;
 }
 
-.login-label {
+.register-label {
   color: white;
   margin-top: 10px;
   align-self: flex-start;
 }
 
-.login-input {
+.register-input {
   width: 100%;
   height: 35px;
   margin-top: 5px;
@@ -90,8 +50,7 @@ body {
   outline: none;
 }
 
-
-.login-button {
+.register-button {
   margin-top: 10px;
   height: 35px;
   width: 100%;
@@ -102,11 +61,21 @@ body {
   font-weight: 500;
 }
 
-
 @media (hover: hover) {
-  .login-button:hover {
+  .register-button:hover {
     transform: scale(1.05);
   }
+}
+
+.google-section {
+  margin-top: 12px;
+  text-align: center;
+}
+
+.or-text {
+  margin: 8px 0;
+  color: white;
+  font-size: 14px;
 }
 
 .login-text {
@@ -116,12 +85,21 @@ body {
   text-align: center;
 }
 
-.register-link {
+.login-link {
   color: #b81515ff;
   text-decoration: none;
   margin-left: 5px;
 }
 
-.register-link:hover {
+.login-link:hover {
   text-decoration: underline;
+}
+.login-button{
+    margin-top: 10px;
+    height: 35px;
+    width: 100%;
+    background-color: darkgrey;
+    border-radius: 5px;
+    border-style: inset;
+    cursor: pointer;
 }
