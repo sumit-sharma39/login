@@ -17,7 +17,7 @@ const [password, setPassword] = useState("");
 const savedetails = async (e) => {
     e.preventDefault();
     const payload = { email, password };
-    const r = await axios.post(`${ BASE_URL}/register`, payload);
+    const r = await axios.post(`${BASE_URL}/register`, payload);
     console.log(r);
     if (r.data === 1) {
         window.location.href = "/home";

@@ -12,7 +12,7 @@ export function Login() {
   const checkdetails = async (e) => {
     e.preventDefault();
     const payload = { email, password };
-    const r= await axios.post(`${ BASE_URL}/login`, payload);
+    const r= await axios.post(`${BASE_URL}/login`, payload);
     if(r.statusText==="OK "){
       window.location.href = "/home";
     }
