@@ -1,1 +1,1 @@
-export const NGROK_URL="https://proficiently-bibliophagous-wilma.ngrok-free.dev"; 
+export const BASE_URL="https://proficiently-bibliophagous-wilma.ngrok-free.dev"; 
