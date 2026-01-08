@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {BASE_URL} from '../config/config.js';
+import {BASE_URL} from './config.js';
 // import { useEffect } from 'react';
 import './index.css';
 import { GoogleLogin } from '@react-oauth/google'

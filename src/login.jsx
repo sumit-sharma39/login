@@ -2,7 +2,7 @@ import "./index.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
-import {BASE_URL} from '../config/config.js';
+import {BASE_URL} from './config.js';
 
 export function Login() {
   const [email, setEmail] = useState("");
