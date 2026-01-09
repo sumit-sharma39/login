@@ -118,7 +118,7 @@ export function Register() {
           alert("User already exists. Please login.");
           navigate("/login");
         } else {
-          alert(error.response.data.message || "Registration failed");
+          alert("Registration failed");
         }
       } else {
         alert("Server not reachable");

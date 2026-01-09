@@ -11,18 +11,39 @@ export function Login() {
 
   const checkdetails = async (e) => {
     e.preventDefault();
-    console.log("Login button clicked");
+
+    if (!email || !password) {
+      alert("Email and password are required");
+      return;
+    }
+
     const payload = { email, password };
-    console.log(payload);
-    const r = await axios.post(`${BASE_URL}/login`, payload);
-    // const r = await axios.post("http://localhost:8000/login", payload);
-    console.log("r = data",r);
+    console.log("login payload =", payload);
 
+    try {
+      const r = await axios.post(`${BASE_URL}/login`, payload);
+      console.log("login response =", r);
 
-    if (r.data === 1) {
-      navigate("/home");
-    } else {
-      navigate("/login");
+      if (r.data === 1 || r.data?.success === true) {
+        alert("Login successful");
+        navigate("/home");
+      } else {
+        alert("Invalid credentials");
+      }
+    } catch (error) {
+      if (error.response) {
+        if (error.response.status === 401) {
+          alert("Invalid email or password");
+        } else if (error.response.status === 404) {
+          alert("User not found. Please register.");
+          navigate("/register");
+        } else {
+          alert("Login failed");
+        }
+      } else {
+        alert("Server not reachable");
+        console.error(error);
+      }
     }
   };
 
@@ -37,6 +58,7 @@ export function Login() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="login-input"
+          required
         />
 
         <label className="login-label">Password:</label>
@@ -45,6 +67,7 @@ export function Login() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="login-input"
+          required
         />
 
         <button type="submit" className="login-button">
