@@ -30,17 +30,24 @@ export function Login() {
 } else {
   alert("Invalid credentials");
 }
-    } catch (error) {
+    } 
+    
+    catch (error) {
+
       if (error.response) {
         if (error.response.status === 401) {
           alert("Invalid email or password");
-        } else if (error.response.status === 404) {
+        } 
+        
+        else if (error.response.status === 404) {
           alert("User not found. Please register.");
           navigate("/register");
         } else {
           alert("Login failed");
         }
-      } else {
+      } 
+      
+      else {
         alert("Server not reachable");
         console.error(error);
       }
@@ -48,6 +55,7 @@ export function Login() {
   };
 
   return (
+    
     <div className="login-container">
       <form className="login-form" onSubmit={checkdetails}>
         <h2 className="login-title">Login</h2>
