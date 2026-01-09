@@ -65,10 +65,10 @@ export function Register() {
 
     <div className="register-container"> 
 
-      <form className="register-form" onSubmit={savedetails}>   // form
+      <form className="register-form" onSubmit={savedetails}>   
         <h2 className="register-title">Register</h2>
 
-        <label className="register-label">Email:</label>  // email 
+        <label className="register-label">Email:</label>   
         <input
           type="email"
           value={email}
@@ -77,7 +77,7 @@ export function Register() {
           required
         />
 
-        <label className="register-label">Password:</label>  // password
+        <label className="register-label">Password:</label>  
         <input
           type="password"
           value={password}
@@ -90,7 +90,6 @@ export function Register() {
           Register
         </button>
 
-        // google authentication button
         <div className="google-section"> 
           <p className="or-text">or</p>
           <GoogleLogin
@@ -99,9 +98,8 @@ export function Register() {
           />
         </div>
 
-        // link to login page
         <button className="login-button" type="button">
-          <Link to="/login" className="login-link">
+          <Link style={{"color":"black" , "text-decoration" : "none"}} to="/login" className="login-link">
             Login
           </Link>
         </button>

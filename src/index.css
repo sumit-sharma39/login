@@ -125,3 +125,8 @@ body {
 .register-link:hover {
   text-decoration: underline;
 }
+
+.login-link {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
