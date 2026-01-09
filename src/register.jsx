@@ -44,7 +44,6 @@ export function Register() {
   }
   };
 
-
   //<<-------- google authentication ------------->>
   const handleGoogleLogin = async (credentialResponse) => {
     try {
@@ -64,11 +63,12 @@ export function Register() {
   return (
 
 
-    <div className="register-container">
-      <form className="register-form" onSubmit={savedetails}>
+    <div className="register-container"> 
+
+      <form className="register-form" onSubmit={savedetails}>   // form
         <h2 className="register-title">Register</h2>
 
-        <label className="register-label">Email:</label>
+        <label className="register-label">Email:</label>  // email 
         <input
           type="email"
           value={email}
@@ -77,7 +77,7 @@ export function Register() {
           required
         />
 
-        <label className="register-label">Password:</label>
+        <label className="register-label">Password:</label>  // password
         <input
           type="password"
           value={password}
@@ -90,7 +90,8 @@ export function Register() {
           Register
         </button>
 
-        <div className="google-section">
+        // google authentication button
+        <div className="google-section"> 
           <p className="or-text">or</p>
           <GoogleLogin
             onSuccess={handleGoogleLogin}
@@ -98,6 +99,7 @@ export function Register() {
           />
         </div>
 
+        // link to login page
         <button className="login-button" type="button">
           <Link to="/login" className="login-link">
             Login
