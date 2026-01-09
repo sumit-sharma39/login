@@ -2,24 +2,26 @@ import { useState } from "react";
 import { BASE_URL } from "./config";
 import "./reg.css";
 import { GoogleLogin } from "@react-oauth/google";
-import { Link } from "react-router-dom";
+import { Link , useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export function Register() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const savedetails = async (e) => {
     e.preventDefault();
     const payload = { email, password };
-
+    console.log("register payload =",payload);
     //const r = await axios.post(`${BASE_URL}/register`, payload);
-    const r= await axios.post("localhost:8000/register", payload);
+    const r= await axios.post("http://localhost:8000/register", payload);
 
-    if (r.data === 1) {
-      window.location.href = "/home";
+    console.log("registerd data = ",r);
+    if (r.status === 200) {
+            navigate("/home");
     } else {
-      window.location.href = "/login";
+            navigate("/login");
     }
   };
 

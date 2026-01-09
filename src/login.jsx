@@ -11,9 +11,12 @@ export function Login() {
 
   const checkdetails = async (e) => {
     e.preventDefault();
+    console.log("Login button clicked");
     const payload = { email, password };
-    // const r= await axios.post("localhost:8000/login", payload);
-    const r = await axios.post(`${BASE_URL}/login`, payload);
+    console.log(payload);
+    const r = await axios.post("http://localhost:8000/login", payload);
+    console.log("r = data",r);
+    // const r = await axios.post(`${BASE_URL}/login`, payload);
 
 
     if (r.data === 1) {
