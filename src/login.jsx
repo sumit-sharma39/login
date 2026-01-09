@@ -24,12 +24,12 @@ export function Login() {
       const r = await axios.post(`${BASE_URL}/login`, payload);
       console.log("login response =", r);
 
-      if (r.data === 1 || r.data?.success === true) {
-        alert("Login successful");
-        navigate("/home");
-      } else {
-        alert("Invalid credentials");
-      }
+      if (r.status === 200) {
+  alert("Login successful");
+  navigate("/home");
+} else {
+  alert("Invalid credentials");
+}
     } catch (error) {
       if (error.response) {
         if (error.response.status === 401) {
