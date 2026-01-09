@@ -14,8 +14,8 @@ export function Register() {
     e.preventDefault();
     const payload = { email, password };
     console.log("register payload =",payload);
-    //const r = await axios.post(`${BASE_URL}/register`, payload);
-    const r= await axios.post("http://localhost:8000/register", payload);
+    const r = await axios.post(`${BASE_URL}/register`, payload);
+    // const r= await axios.post("http://localhost:8000/register", payload);
 
     console.log("registerd data = ",r);
     if (r.status === 200) {

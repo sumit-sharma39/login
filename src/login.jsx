@@ -14,9 +14,9 @@ export function Login() {
     console.log("Login button clicked");
     const payload = { email, password };
     console.log(payload);
-    const r = await axios.post("http://localhost:8000/login", payload);
+    const r = await axios.post(`${BASE_URL}/login`, payload);
+    // const r = await axios.post("http://localhost:8000/login", payload);
     console.log("r = data",r);
-    // const r = await axios.post(`${BASE_URL}/login`, payload);
 
 
     if (r.data === 1) {
